@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: Qoala App Services
+  version: 1.0.0
+servers:
+  - url: https://api-staging.qoala.app/api
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+paths:
+  /products/health:
+    post:
+      summary: Get Health Products
+      security:
+        - BearerAuth: []
+      tags:
+        - "Health Category"
+      description: |
+        Get all products from different insurers for the following lead
+      produces:
+      - application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                category: "INDIVIDUAL"
+                products:
+                  - "IP"
+                covereds:
+                  - kind: "SELF"
+                    datas:
+                      - gender: "MALE"
+                        birthdate: "1994-07-07"
+                uuid: "40052dd3-9f9f-471a-887c-fd53628b46f2"
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: 200
+                data:
+                  - product_code: HEALTH-AXAAFFIN-MY-01
+                    name: "AXA Affin General Insurance - Medic Cover (Annual) - Plan 1"
+                    logo: "https://assets.qoalaplus.com/images/axa-affin.png"
+                    insurance:
+                      - code: "AXAAFFIN"
+                        name: "AXA Affin General Insurance Malaysia"
+                        logo: "https://assets.qoalaplus.com/images/axa-affin.png"
+                        is_active: true
+                        alias: "AXA Affin General Insurance Malaysia"
+                    category:
+                      - code: "MY"
+                        name: "Health Product Malaysia"
+                        description: "CATEGORY_DESCIPTION_MY"
+                        type: "INDIVIDUAL"
+                    benefits: []
+                    summary: ""
+                    insurance_detail: ""
+                    currency_code: "MYR"
+                    premium: 63.42
+                    admin_fee: 0
+                    hardcopy_admin_fee: 0
+                    free_look_period: 14
+                    questions: []
+                    settlements: []
+                    contents:
+                      - title: "Detail Produk"
+                        type: "DETAIL_HTML"
+                        code: ""
+                        contents:
+                          - label: ""
+                            type: "HTML"
+                            value: ""
+                      - title: "Detail Perlindungan"
+                        type: "DETAIL_LABEL_VALUE"
+                        code: "HEALTH-AXAAFFIN-MY-01"
+                        contents: []
+                    terms:
+                      - title: "Saya setuju dengan syarat dan ketentuan asuransi"
+                        type: "TNC_HTML"
+                        code: ""
+                        contents:
+                          - label: ""
+                            type: "HTML"
+                            value: ""
+                          - label: ""
+                            type: "FILE"
+                            value: ""
+                    insurance_code: "AXAAFFIN"
+                    insurer_name: "AXA Affin General Insurance Malaysia"
+                    is_active: true
+                    entity: "QOALAAPPMY"
+                    product_category: "MY"
+                    premium_type: "FIXED_MYR"
+                    premium_period: ""
+                    disable_discount: false
+                    min_bmi: 0
+                    max_bmi: 0
+                meta:
+                  count: 9,
+                  page: 1,
+                  limit: 2000,
+                  pages: 1
+                message: Success find many product detail
